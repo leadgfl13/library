@@ -13,12 +13,16 @@ body{margin:0px;
 .topleft{
     grid-area:1/1/2/2;
     background-color:red;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 .top{
     grid-area:1/2/2/4;
     background-color: blue;
     height:100%;
+    
 }
 .leftcolumn{
     grid-area:2/1/3/2;
@@ -31,9 +35,12 @@ body{margin:0px;
     background-color: black;
     display:grid;
     grid-template-columns:repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: minmax(5px, 50px);
+    
     }
-
+.heads{
+    font-size:64px;
+}
 .bookcard{
     display:grid;
     grid-template-columns:1fr 3fr;
@@ -43,6 +50,12 @@ body{margin:0px;
     background-color:antiquewhite;
     margin:5px;
     
+}
+
+.submitbook{
+    height:70px;
+    width:140px;
+    border-radius:13px;
 }
 
 .titlelabel{
