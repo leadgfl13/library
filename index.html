@@ -102,12 +102,20 @@
     didRead.setAttribute('type','text')
     didRead.setAttribute('placeholder','Did you read it?')
     form.append(didRead)
-    left.append(form)
-    }
+    
 
+    var submitInfo = document.createElement('button')
+    submitInfo.setAttribute('type','submit')
+    submitInfo.setAttribute('style','height:30px; width:100%; border-radius:10px;padding:5px;')
+    form.append(submitInfo)
+    left.append(form)
+
+  }
+//actuall button event listener
 submitBook.addEventListener('click', makeForm)
 
-//function to make form
+
+
 
 </script>
 </html>
