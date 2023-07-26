@@ -24,7 +24,7 @@ body{margin:0px;
     height:100%;
     
 }
-.leftcolumn{
+#leftcolumn{
     grid-area:2/1/3/2;
     background-color: green;
 
@@ -52,7 +52,7 @@ body{margin:0px;
     
 }
 
-.submitbook{
+#submitbook{
     height:70px;
     width:140px;
     border-radius:13px;
@@ -122,3 +122,6 @@ body{margin:0px;
     justify-content:center;
     align-items:center;
 }
+
+#leftcolumn2{
+    background-color:blue;}

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
     <div class="container">
@@ -12,11 +13,11 @@
             <div class="heads">Title Test Here!</div>
         </div>
         <div class="topleft">
-            <button class = submitbook>Add Book to Library!</button>
+            <button id = submitbook>Add Book to Library!</button>
         </div>
 
-        <div class="leftcolumn">
-            Maybe make a list of links here?
+        <div class="leftcolumn" id = "leftcolumn">
+            something goes here
         </div>
         <div class="middlearea">
             <div class="bookcard">
@@ -362,6 +363,7 @@
 </body>
 
 <script>
+    
 
     let myLibrary = [] //sets library to an empty array
 
@@ -374,8 +376,30 @@
 
     //make a function to add book to library
 
-    function addBook(book){
 
+    //make a function for clicking the submit new book button
+  const submitBook = document.getElementById('submitbook')
+  const left = document.getElementById('leftcolumn')
+  const left2 = document.getElementById('leftcolumn')
+
+
+  function makeForm(){
+
+        const left = document.getElementById('leftcolumn')
+        const form = document.createElement('form')
+        form.setAttribute('method',"post");
+        form.setAttribute('action',"submit.php");
+        var i = document.createElement("input");
+        i.setAttribute('type',"text");
+        i.setAttribute('name',"username");
+        i.setAttribute('placeholder','Book name goeshere')
+        form.appendChild(i)
+        left.appendChild(form);
     }
+
+submitBook.addEventListener('click', makeForm)
+
+//function to make form
+
 </script>
 </html>
