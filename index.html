@@ -13,8 +13,9 @@
             <div class="heads">Title Test Here!</div>
         </div>
         <div class="topleft">
-            <button id = submitbook>Add Book to Library!</button>
+            <button id = submitbook onclick = "openForm()">Add Book to Library!</button>
         </div>
+        
 
         <div class="leftcolumn" id = "leftcolumn">
             something goes here
@@ -36,26 +37,17 @@
                     <button>Remove Book</button>
                 </div>
             </div>
-
-
-         
-
-
-            
-
-            
-
             
         </div>
 
-        
     </div>
+
     
 </body>
 
 <script>
     
-
+// Need to create pop up functions  that changes display from none to block;
     let myLibrary = [] //sets library to an empty array
 
     //Book constructor
@@ -74,46 +66,9 @@
   const left2 = document.getElementById('leftcolumn')
 
 
-  function makeForm(){
-//creates from.  NEED TO SEND DATA SOMEWHERE
-        const left = document.getElementById('leftcolumn')
-        const form = document.createElement('form')
-      
-//creates name input
-        var bookName = document.createElement('input')
-        bookName.setAttribute('type','text')
-        bookName.setAttribute('placeholder','Book Name')
-        form.appendChild(bookName)
-
-//creates author input
-    var bookAuthor =document.createElement('input')
-    bookAuthor.setAttribute('type','text')
-    bookAuthor.setAttribute('placeholder','Author')
-    form.appendChild(bookAuthor)
-    //creates number of pages
-    var bookPages =document.createElement('input')
-    bookPages.setAttribute('type','number')
-    bookPages.setAttribute('placeholder','# pages')
-    bookPages.setAttribute('required', 'yes')
-    form.appendChild(bookPages)
-
-//creates read input
-    var didRead = document.createElement('input')
-    didRead.setAttribute('type','text')
-    didRead.setAttribute('placeholder','Did you read it?')
-    form.append(didRead)
-    
-
-    var submitInfo = document.createElement('button')
-    submitInfo.setAttribute('type','submit')
-    submitInfo.setAttribute('style','height:30px; width:100%; border-radius:10px;padding:5px;')
-    form.append(submitInfo)
-    left.append(form)
-
+  function openForm(){
+    prompt("Hello?")
   }
-//actuall button event listener
-submitBook.addEventListener('click', makeForm)
-
 
 
 
