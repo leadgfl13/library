@@ -8,12 +8,12 @@
     
 </head>
 <body>
-    <div class="container">
+    <div class="container" id = 'container'>
         <div class="top">
             <div class="heads">Title Test Here!</div>
         </div>
         <div class="topleft">
-            <button id = submitbook onclick = "openForm()">Add Book to Library!</button>
+            <button id = submitbook>Add Book to Library!</button>
         </div>
         
 
@@ -37,17 +37,34 @@
                     <button>Remove Book</button>
                 </div>
             </div>
-            
+      
+          
         </div>
 
+        
+        
     </div>
-
     
+    <div class="formcontrol" id = 'formcontainer'>
+
+        <form action="" id = "form">
+
+            <label for="bookname">Book Name</label>
+               <input type="text" id = 'bookname'>
+
+           <button type ="Submit">Submit Button bitches</button>
+           <button type ="cancel">Cancel</button>
+
+        </form>
+
+    </div>
+    
+
 </body>
 
 <script>
     
-// Need to create pop up functions  that changes display from none to block;
+
     let myLibrary = [] //sets library to an empty array
 
     //Book constructor
@@ -66,10 +83,23 @@
   const left2 = document.getElementById('leftcolumn')
 
 
-  function openForm(){
-    prompt("Hello?")
-  }
+  
+//actuall button event listener
+submitBook.addEventListener('click', makeForm)
 
+function makeForm(){
+    const formValue = document.getElementById('formcontainer')
+    formValue.setAttribute('style', 'display:block')
+    const body = document.getElementById('container')
+    body.setAttribute('style','pointer-events:none; filter:blur(4px)')
+
+ 
+}
+
+// Need to use preventDefaultfunction to stop data from being sent.
+
+//instead, make a custom function, that gets the data from the fields, stores it as an object,
+// then creates the card using the object data
 
 
 </script>

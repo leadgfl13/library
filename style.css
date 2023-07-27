@@ -127,14 +127,22 @@ body{margin:0px;
     background-color:blue;}
 
 
-form{
-    display:flex;
-    flex-direction:column;
-    border:2px solid purple;
-    gap:2px;
-}
-
 input:valid{
     width:100%;
     background-color:aquamarine;
 }
+
+#formcontainer{
+    display:none;
+    position:absolute;
+    top:200px;
+    left:475px;
+    height:200px;
+    width:400px;
+    margin: auto;
+    background-color:antiquewhite;
+}
+
+
+
+
