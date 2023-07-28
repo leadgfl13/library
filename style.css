@@ -135,14 +135,54 @@ input:valid{
 #formcontainer{
     display:none;
     position:absolute;
+   
     top:200px;
     left:475px;
-    height:200px;
-    width:400px;
-    margin: auto;
+    height:280px;
+    width:300px;
     background-color:antiquewhite;
+    box-shadow:2px 2px 2px 2px gray;
+    border-radius:8px;
+    margin:8px;
+    
+}
+
+#form{
+    display:flex;
+    flex-direction:column;
+    vertical-align:left;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    margin-top:10px;
+ }
+
+input[type ='text'], input[type = 'number']{
+    width:80px;
+    margin:auto;
+}
+.radiobox{
+    display:flex;
+    flex-direction:row;
+    gap:8px;
+    margin:auto;
+}
+
+.inputcontainer{
+    display:flex;
+    flex-direction:column;
+text-align:center;   
 }
 
 
-
+.radio{
+    display:flex;
+    gap:10px;
+    margin:auto;
+}
+.radio-title{
+    font-weight:600;
+    font-size:16px;
+    text-decoration: underline black solid;
+}
 

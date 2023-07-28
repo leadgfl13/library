@@ -48,9 +48,36 @@
     <div class="formcontrol" id = 'formcontainer'>
 
         <form action="" id = "form">
+        <div class="inputcontainer">
+             <label for="bookname">Book Name:</label>
+            <input type="text" id = 'bookname'>
+        </div>
+        
+        <div class="inputcontainer">
+            <label for="author">Author:</label>
+            <input type="text" id ="author">
+        </div>
 
-            <label for="bookname">Book Name</label>
-               <input type="text" id = 'bookname'>
+        <div class="inputcontainer">
+            <label for="pages"># Pages:</label>
+            <input type="number" id = "pages">
+        </div>
+            
+
+            <div class="radiobox">
+                <div class = "radio-title">Did you read it?</div>
+                <div class = "radio">
+                    <label for="read">Yes</label>
+                     <input type="radio" value = "read" id = "read" name ="choice">
+                </div>
+                
+                <div class = "radio">
+                    <label for="no">No</label>
+                    <input type="radio" value ="notread" id = "no" name = "choice">
+                </div>
+
+            </div>
+           
 
            <button type ="Submit">Submit Button bitches</button>
            <button type ="cancel">Cancel</button>
@@ -89,11 +116,10 @@ submitBook.addEventListener('click', makeForm)
 
 function makeForm(){
     const formValue = document.getElementById('formcontainer')
-    formValue.setAttribute('style', 'display:block')
+    formValue.setAttribute('style', 'display:flex; flex-direction:column')
     const body = document.getElementById('container')
     body.setAttribute('style','pointer-events:none; filter:blur(4px)')
 
- 
 }
 
 // Need to use preventDefaultfunction to stop data from being sent.
