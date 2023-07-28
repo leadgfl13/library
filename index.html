@@ -79,7 +79,7 @@
             </div>
            
 
-           <button type ="Submit">Submit Button bitches</button>
+           <button type ="Submit" id = 'submitentry'>Submit Button bitches</button>
            <button type ="cancel">Cancel</button>
 
         </form>
@@ -110,6 +110,7 @@
   const left2 = document.getElementById('leftcolumn')
 
 
+
   
 //actuall button event listener
 submitBook.addEventListener('click', makeForm)
@@ -121,6 +122,11 @@ function makeForm(){
     body.setAttribute('style','pointer-events:none; filter:blur(4px)')
 
 }
+
+const submitEntry = document.getElementById('submitentry')
+
+submitEntry.addEventListener('click', function(event){
+    event.preventDefault() } )
 
 // Need to use preventDefaultfunction to stop data from being sent.
 
