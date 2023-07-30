@@ -66,14 +66,14 @@
 
             <div class="radiobox">
                 <div class = "radio-title">Did you read it?</div>
-                <div class = "radio">
+                <div class = "radio" id = 'radios'>
                     <label for="read">Yes</label>
-                     <input type="radio" value = "read" id = "read" name ="choice">
+                     <input type="radio" value = "yes" id = "read" name ="choice">
                 </div>
                 
-                <div class = "radio">
-                    <label for="no">No</label>
-                    <input type="radio" value ="notread" id = "no" name = "choice">
+                <div class = "radio" id = 'radios'>
+                    <label for="notread">No</label>
+                    <input type="radio" value ="no" id = "notread" name = "choice">
                 </div>
 
             </div>
@@ -95,10 +95,11 @@
     let myLibrary = [] //sets library to an empty array
 
     //Book constructor
-    function Book(title, author, pages){
+    function Book(title, author, pages, read){
         this.title = title
         this.author = author
         this.pages = pages
+        this.read = read
     }
 
 
@@ -129,20 +130,39 @@ const submitEntry = document.getElementById('submitentry')
 submitEntry.addEventListener('click', function(event){
 event.preventDefault() 
 } )
+submitEntry.addEventListener('click', Check)
 submitEntry.addEventListener('click', getData)
+
 
 
 //instead, make a custom function, that gets the data from the fields, stores it as an object,
 // then creates the card using the object data
 
+
+
+
+
+
+
+
+function Check(){
+    if(document.getElementById('read').checked){
+        read = document.getElementById('read').value
+    }
+    else if(document.getElementById('notread').checked){
+        read = document.getElementById('notread').value
+    }
+    return(read)
+}
+
 function getData(){
-const title = document.getElementById('bookname').value
-const author = document.getElementById('author').value
-const pages = document.getElementById('pages').value
+    const title = document.getElementById('bookname').value
+    const author = document.getElementById('author').value
+    const pages = document.getElementById('pages').value
+    const newBook = new Book(title, author, pages, read)
+    console.log(newBook)
+    console.log(read)
 
-const newBook = new Book((title), (author), (pages))
-
-console.log(newBook)
 }
 
 </script>
