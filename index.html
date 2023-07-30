@@ -95,13 +95,12 @@
     let myLibrary = [] //sets library to an empty array
 
     //Book constructor
-    function Book(name, title, author){
-        this.name = name
-        this.author = author
+    function Book(title, author, pages){
         this.title = title
+        this.author = author
+        this.pages = pages
     }
 
-    //make a function to add book to library
 
 
     //make a function for clicking the submit new book button
@@ -125,14 +124,26 @@ function makeForm(){
 
 const submitEntry = document.getElementById('submitentry')
 
-submitEntry.addEventListener('click', function(event){
-    event.preventDefault() } )
-
 // Need to use preventDefaultfunction to stop data from being sent.
+
+submitEntry.addEventListener('click', function(event){
+event.preventDefault() 
+} )
+submitEntry.addEventListener('click', getData)
+
 
 //instead, make a custom function, that gets the data from the fields, stores it as an object,
 // then creates the card using the object data
 
+function getData(){
+const title = document.getElementById('bookname').value
+const author = document.getElementById('author').value
+const pages = document.getElementById('pages').value
+
+const newBook = new Book((title), (author), (pages))
+
+console.log(newBook)
+}
 
 </script>
 </html>
