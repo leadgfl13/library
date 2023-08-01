@@ -90,31 +90,42 @@
 </body>
 
 <script>
-    
 
-    let myLibrary = [] //sets library to an empty array
+let myLibrary = [] //sets library to an empty array
 
-    //Book constructor
-    function Book(title, author, pages, read){
+//Book constructor
+function Book(title, author, pages, read){
         this.title = title
         this.author = author
         this.pages = pages
         this.read = read
-    }
+}
+
+//constant values
+const title = document.getElementById('bookname').value
+const author = document.getElementById('author').value
+const pages = document.getElementById('pages').value
+var read = document.getElementById('read')
+var notread = document.getElementById('notread')
+const formcontainer = document.getElementById('formcontainer')
+
+const submitBook = document.getElementById('submitbook')
+const left = document.getElementById('leftcolumn')
+const left2 = document.getElementById('leftcolumn')
+const submitEntry = document.getElementById('submitentry')
 
 
 
-    //make a function for clicking the submit new book button
-  const submitBook = document.getElementById('submitbook')
-  const left = document.getElementById('leftcolumn')
-  const left2 = document.getElementById('leftcolumn')
-
-
-
-  
-//actuall button event listener
+//Submit new book Event for bringing up input form
 submitBook.addEventListener('click', makeForm)
+// Need to use preventDefaultfunction to stop data from being sent.
+submitEntry.addEventListener('click', function(event){event.preventDefault()})
+submitEntry.addEventListener('click', Check)
+submitEntry.addEventListener('click', getData)
+submitEntry.addEventListener('click', clearData)
 
+
+// function to make the form
 function makeForm(){
     const formValue = document.getElementById('formcontainer')
     formValue.setAttribute('style', 'display:flex; flex-direction:column')
@@ -123,28 +134,7 @@ function makeForm(){
 
 }
 
-const submitEntry = document.getElementById('submitentry')
-
-// Need to use preventDefaultfunction to stop data from being sent.
-
-submitEntry.addEventListener('click', function(event){
-event.preventDefault() 
-} )
-submitEntry.addEventListener('click', Check)
-submitEntry.addEventListener('click', getData)
-
-
-
-//instead, make a custom function, that gets the data from the fields, stores it as an object,
-// then creates the card using the object data
-
-
-
-
-
-
-
-
+//changes the read status depending on what is checked
 function Check(){
     if(document.getElementById('read').checked){
         read = document.getElementById('read').value
@@ -155,14 +145,28 @@ function Check(){
     return(read)
 }
 
+// function to get the form data and stores it in Book object
 function getData(){
     const title = document.getElementById('bookname').value
     const author = document.getElementById('author').value
     const pages = document.getElementById('pages').value
     const newBook = new Book(title, author, pages, read)
     console.log(newBook)
-    console.log(read)
+    myLibrary.push(Book)
+    console.log(myLibrary)
+}
 
+//function to clear input and make form invisible again
+function clearData(){
+    const title = document.getElementById('bookname').value = ''
+    const author = document.getElementById('author').value = ''
+    const pages = document.getElementById('pages').value = ''
+    const notread = document.getElementById('notread').checked = false
+    const read = document.getElementById('read').checked = false
+    formcontainer.setAttribute('style', 'display:none')
+    const body = document.getElementById('container')
+    body.setAttribute('style','pointer-events:auto; filter:blur(0px)')
+    
 }
 
 </script>
