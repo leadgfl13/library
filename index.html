@@ -20,8 +20,8 @@
         <div class="leftcolumn" id = "leftcolumn">
             something goes here
         </div>
-        <div class="middlearea">
-            <div class="bookcard">
+        <div class="middlearea" id = cardarea>
+            <div class="bookcard" id = bookcard>
                 <div class="titlelabel">Title:</div>
                 <div class="title">The actual title goes here</div>
                 <div class="authorlabel">Author:</div>
@@ -125,6 +125,7 @@ submitEntry.addEventListener('click', getData)
 submitEntry.addEventListener('click', clearData)
 
 
+
 // function to make the form
 function makeForm(){
     const formValue = document.getElementById('formcontainer')
@@ -158,16 +159,28 @@ function getData(){
 
 //function to clear input and make form invisible again
 function clearData(){
-    const title = document.getElementById('bookname').value = ''
-    const author = document.getElementById('author').value = ''
-    const pages = document.getElementById('pages').value = ''
-    const notread = document.getElementById('notread').checked = false
-    const read = document.getElementById('read').checked = false
+    const title = document.getElementById('bookname')
+    const author = document.getElementById('author')
+    const pages = document.getElementById('pages')
+    var read = document.getElementById('read')
+    var notread = document.getElementById('notread')
+    title.value = ''
+    author.value = ''
+    pages.value = ''
+    notread.checked = false
+    read.checked = false
     formcontainer.setAttribute('style', 'display:none')
     const body = document.getElementById('container')
     body.setAttribute('style','pointer-events:auto; filter:blur(0px)')
     
 }
+
+//LOOP function for making cards.
+//For Books in Library:
+//Make a card. set card title to book.title, author to book.author, etc.
+
+
+
 
 </script>
 </html>
