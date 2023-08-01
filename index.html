@@ -123,6 +123,7 @@ submitEntry.addEventListener('click', function(event){event.preventDefault()})
 submitEntry.addEventListener('click', Check)
 submitEntry.addEventListener('click', getData)
 submitEntry.addEventListener('click', clearData)
+submitEntry.addEventListener('click', makeCard)
 
 
 
@@ -179,7 +180,14 @@ function clearData(){
 //For Books in Library:
 //Make a card. set card title to book.title, author to book.author, etc.
 
+function makeCard(){
+    cardarea = document.getElementById('cardarea') 
+    card = document.createElement('div')
+    card.setAttribute('id', 'bookcard')
+    cardarea.appendChild(card)
+}
 
+myLibrary.forEach.makeCard()
 
 
 </script>
