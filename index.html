@@ -21,23 +21,7 @@
             something goes here
         </div>
         <div class="middlearea" id = cardarea>
-            <div class="bookcard" id = bookcard>
-                <div class="titlelabel" id = 'titlelabel'>Title:</div>
-                <div class="title" id = 'realtitle'>The actual title goes here</div>
-                <div class="authorlabel" id = 'authorlabel'>Author:</div>
-                <div class="author" id = 'realauthor'>Actual Author goes here</div>
-                <div class="pageslabel" id = 'pageslabel'>Pages:</div>
-                <div class="pages" id = 'realpages'>257</div>
-                <div class="readlabel" id = readlabel>Read?</div>
-                <div class="read" id = 'realread'>Yes/No</div>
-                <div class="changelabel" id = 'changelabel'>  
-                    <button>Change read status</button>
-                </div>
-                <div class="remove" id = 'remove'>
-                    <button>Remove Book</button>
-                </div>
-            </div>
-      
+        
           
         </div>
 
@@ -182,7 +166,7 @@ function clearData(){
 //For Books in Library:
 //Make a card. set card title to book.title, author to book.author, etc.
 
-function makeCard(){
+function makeCard(Book){
     cardarea = document.getElementById('cardarea') 
     card = document.createElement('div')
     card.setAttribute('id', 'bookcard')
@@ -203,7 +187,7 @@ function makeCard(){
     realauthor.setAttribute('id', 'realauthor')
     realauthor.innerHTML='Placeholder'
     card.appendChild(realauthor)
-    pagesllabel = document.createElement('div')
+    pageslabel = document.createElement('div')
     pageslabel.setAttribute('id', 'pageslabel')
     card.appendChild(pageslabel)
     realpages = document.createElement('div')
@@ -229,10 +213,10 @@ function makeCard(){
     removebuttonactual = document.createElement('button')
     removebuttonactual.innerHTML= "remove"
     removebutton.appendChild(removebuttonactual)
-    
 }
-// function does not work currently
-myLibrary.forEach.makeCard()
+
+//looping function
+
 
 
 </script>
