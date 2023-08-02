@@ -107,7 +107,7 @@ submitEntry.addEventListener('click', function(event){event.preventDefault()})
 submitEntry.addEventListener('click', Check)
 submitEntry.addEventListener('click', getData)
 submitEntry.addEventListener('click', clearData)
-submitEntry.addEventListener('click', makeCard)
+submitEntry.addEventListener('click', loop)
 cancelbutton.addEventListener('click', function(event){event.preventDefault()})
 cancelbutton.addEventListener('click', clearData )
 
@@ -140,8 +140,7 @@ function getData(){
     const pages = document.getElementById('pages').value
     const newBook = new Book(title, author, pages, read)
     console.log(newBook)
-    myLibrary.push(Book)
-    console.log(myLibrary)
+    myLibrary.push(newBook)
 }
 
 //function to clear input and make form invisible again
@@ -166,18 +165,18 @@ function clearData(){
 //For Books in Library:
 //Make a card. set card title to book.title, author to book.author, etc.
 
-function makeCard(Book){
+function makeCard(something){
     cardarea = document.getElementById('cardarea') 
     card = document.createElement('div')
     card.setAttribute('id', 'bookcard')
     cardarea.appendChild(card)
     titlelabel = document.createElement('div')
     titlelabel.setAttribute('id', 'titlelabel')
-    titlelabel.innerHTML = "Title"
+    titlelabel.innerHTML = 'Title'
     card.appendChild(titlelabel)
     realtitle = document.createElement('div')
     realtitle.setAttribute('id','realtitle')
-    realtitle.innerHTML ='placeholder'
+    realtitle.innerHTML = poop.title
     card.appendChild(realtitle)
     authorlabel = document.createElement('div')
     authorlabel.setAttribute('id', 'authorlabel')
@@ -185,14 +184,15 @@ function makeCard(Book){
     card.appendChild(authorlabel)
     realauthor = document.createElement('div')
     realauthor.setAttribute('id', 'realauthor')
-    realauthor.innerHTML='Placeholder'
+    realauthor.innerHTML=poop.author
     card.appendChild(realauthor)
     pageslabel = document.createElement('div')
     pageslabel.setAttribute('id', 'pageslabel')
+    pageslabel.innerHTML = '# Pages'
     card.appendChild(pageslabel)
     realpages = document.createElement('div')
     realpages.setAttribute('id', 'realpages')
-    realpages.innerHTML='pLaceholder'
+    realpages.innerHTML=poop.pages
     card.appendChild(realpages)
     readlabel = document.createElement('div')
     readlabel.setAttribute('id', 'readlabel')
@@ -200,7 +200,7 @@ function makeCard(Book){
     card.appendChild(readlabel)
     realread = document.createElement('div')
     realread.setAttribute('id', 'realread')
-    realread.innerHTML = 'plaCeholder'
+    realread.innerHTML = poop.read
     changebutton = document.createElement('div')
     changebutton.setAttribute('id', 'changelabel')
     card.appendChild(changebutton)
@@ -217,7 +217,15 @@ function makeCard(Book){
 
 //looping function
 
+function loop(){
 
+
+for (poop of myLibrary){
+    let stuff = Object.values(poop)
+    console.log(stuff)
+    makeCard(poop)
+}
+}
 
 </script>
 </html>
