@@ -22,18 +22,18 @@
         </div>
         <div class="middlearea" id = cardarea>
             <div class="bookcard" id = bookcard>
-                <div class="titlelabel">Title:</div>
-                <div class="title">The actual title goes here</div>
-                <div class="authorlabel">Author:</div>
-                <div class="author">Actual Author goes here</div>
-                <div class="pageslabel">Pages:</div>
-                <div class="pages">257</div>
-                <div class="readlabel">Read?</div>
-                <div class="read">Yes/No</div>
-                <div class="changelabel">
+                <div class="titlelabel" id = 'titlelabel'>Title:</div>
+                <div class="title" id = 'realtitle'>The actual title goes here</div>
+                <div class="authorlabel" id = 'authorlabel'>Author:</div>
+                <div class="author" id = 'realauthor'>Actual Author goes here</div>
+                <div class="pageslabel" id = 'pageslabel'>Pages:</div>
+                <div class="pages" id = 'realpages'>257</div>
+                <div class="readlabel" id = readlabel>Read?</div>
+                <div class="read" id = 'realread'>Yes/No</div>
+                <div class="changelabel" id = 'changelabel'>  
                     <button>Change read status</button>
                 </div>
-                <div class="remove">
+                <div class="remove" id = 'remove'>
                     <button>Remove Book</button>
                 </div>
             </div>
@@ -80,7 +80,7 @@
            
 
            <button type ="Submit" id = 'submitentry'>Submit Button bitches</button>
-           <button type ="cancel">Cancel</button>
+           <button type ="cancel" id = 'cancelbutton'>Cancel</button>
 
         </form>
 
@@ -124,6 +124,8 @@ submitEntry.addEventListener('click', Check)
 submitEntry.addEventListener('click', getData)
 submitEntry.addEventListener('click', clearData)
 submitEntry.addEventListener('click', makeCard)
+cancelbutton.addEventListener('click', function(event){event.preventDefault()})
+cancelbutton.addEventListener('click', clearData )
 
 
 
@@ -185,8 +187,51 @@ function makeCard(){
     card = document.createElement('div')
     card.setAttribute('id', 'bookcard')
     cardarea.appendChild(card)
+    titlelabel = document.createElement('div')
+    titlelabel.setAttribute('id', 'titlelabel')
+    titlelabel.innerHTML = "Title"
+    card.appendChild(titlelabel)
+    realtitle = document.createElement('div')
+    realtitle.setAttribute('id','realtitle')
+    realtitle.innerHTML ='placeholder'
+    card.appendChild(realtitle)
+    authorlabel = document.createElement('div')
+    authorlabel.setAttribute('id', 'authorlabel')
+    authorlabel.innerHTML = 'Author'
+    card.appendChild(authorlabel)
+    realauthor = document.createElement('div')
+    realauthor.setAttribute('id', 'realauthor')
+    realauthor.innerHTML='Placeholder'
+    card.appendChild(realauthor)
+    pagesllabel = document.createElement('div')
+    pageslabel.setAttribute('id', 'pageslabel')
+    card.appendChild(pageslabel)
+    realpages = document.createElement('div')
+    realpages.setAttribute('id', 'realpages')
+    realpages.innerHTML='pLaceholder'
+    card.appendChild(realpages)
+    readlabel = document.createElement('div')
+    readlabel.setAttribute('id', 'readlabel')
+    readlabel.innerHTML = "Read?"
+    card.appendChild(readlabel)
+    realread = document.createElement('div')
+    realread.setAttribute('id', 'realread')
+    realread.innerHTML = 'plaCeholder'
+    changebutton = document.createElement('div')
+    changebutton.setAttribute('id', 'changelabel')
+    card.appendChild(changebutton)
+    changebuttonactual = document.createElement('button')
+    changebuttonactual.innerHTML= 'Change read status'
+    changebutton.appendChild(changebuttonactual)
+    removebutton = document.createElement('div')
+    removebutton.setAttribute('id', 'remove')
+    card.appendChild(removebutton)
+    removebuttonactual = document.createElement('button')
+    removebuttonactual.innerHTML= "remove"
+    removebutton.appendChild(removebuttonactual)
+    
 }
-
+// function does not work currently
 myLibrary.forEach.makeCard()
 
 

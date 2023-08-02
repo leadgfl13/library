@@ -58,10 +58,11 @@ body{margin:0px;
     border-radius:13px;
 }
 
-.titlelabel{
+#titlelabel{
     grid-area:1/1/2/2;
     border-right:2px solid black;
     border-bottom:1px solid gray;
+    
 
 }
 
@@ -70,12 +71,17 @@ body{margin:0px;
     border-bottom:1px solid gray;
 }
 
-.authorlabel{
+#realtitle{
+    grid-area:1/2/2/3;
+    border-bottom:1px solid gray;
+}
+
+
+
+#authorlabel{
     grid-area:2/1/3/2;
     border-right:2px solid black;
     border-bottom:1px solid gray;
-
-
 }
 
 .author{
@@ -84,7 +90,12 @@ body{margin:0px;
 
 }
 
-.pageslabel{
+#realauthor{
+    grid-area:2/2/3/3;
+    border-bottom:1px solid gray;
+}
+
+#pageslabel{
     grid-area:3/1/4/2;
     border-right:2px solid black;
     border-bottom:1px solid gray;
@@ -97,8 +108,13 @@ body{margin:0px;
     border-bottom:1px solid gray;
 
 }
+#realpages{ 
+    grid-area:3/2/4/3;
+    border-bottom:1px solid gray;
 
-.readlabel{
+}
+
+#readlabel{
     grid-area:4/1/5/2;
     border-right:2px solid black;
 
@@ -109,18 +125,25 @@ body{margin:0px;
     grid-area:4/2/5/3;
 }
 
-.changelabel{
+#realread{
+    grid-area:4/2/5/3;
+
+}
+
+#changelabel{
     display:flex;
     justify-content:center;
     align-items:center;
     grid-area: 5/1/6/3;
 }
 
-.remove{
+
+#remove{
     grid-area:6/1/7/3;
     display:flex;
     justify-content:center;
     align-items:center;
+
 }
 
 #leftcolumn2{
