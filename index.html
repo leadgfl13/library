@@ -15,61 +15,42 @@
         <div class="topleft">
             <button id = submitbook>Add Book to Library!</button>
         </div>
-        
-
         <div class="leftcolumn" id = "leftcolumn">
             something goes here
         </div>
-        <div class="middlearea" id = cardarea>
-        
-          
-        </div>
-
-        
-        
+        <div class="middlearea" id = cardarea>  
+        </div> 
     </div>
     
     <div class="formcontrol" id = 'formcontainer'>
-
         <form action="" id = "form">
         <div class="inputcontainer">
              <label for="bookname">Book Name:</label>
             <input type="text" id = 'bookname'>
         </div>
-        
         <div class="inputcontainer">
             <label for="author">Author:</label>
             <input type="text" id ="author">
         </div>
-
         <div class="inputcontainer">
             <label for="pages"># Pages:</label>
             <input type="number" id = "pages">
         </div>
-            
-
             <div class="radiobox">
                 <div class = "radio-title">Did you read it?</div>
                 <div class = "radio" id = 'radios'>
                     <label for="read">Yes</label>
                      <input type="radio" value = "yes" id = "read" name ="choice">
                 </div>
-                
                 <div class = "radio" id = 'radios'>
                     <label for="notread">No</label>
                     <input type="radio" value ="no" id = "notread" name = "choice">
                 </div>
-
             </div>
-           
-
            <button type ="Submit" id = 'submitentry'>Submit Button bitches</button>
            <button type ="cancel" id = 'cancelbutton'>Cancel</button>
-
         </form>
-
     </div>
-    
 
 </body>
 
@@ -107,7 +88,9 @@ submitEntry.addEventListener('click', function(event){event.preventDefault()})
 submitEntry.addEventListener('click', Check)
 submitEntry.addEventListener('click', getData)
 submitEntry.addEventListener('click', clearData)
+submitEntry.addEventListener('click', clearAll)
 submitEntry.addEventListener('click', loop)
+
 cancelbutton.addEventListener('click', function(event){event.preventDefault()})
 cancelbutton.addEventListener('click', clearData )
 
@@ -216,16 +199,28 @@ function makeCard(something){
 }
 
 //looping function
+let middle = document.getElementById('id', 'cardarea')
 
 function loop(){
-
-
 for (poop of myLibrary){
-    let stuff = Object.values(poop)
-    console.log(stuff)
+    //need to clear it first
     makeCard(poop)
 }
 }
+
+function clearAll(){
+    main = document.getElementById('cardarea')
+    cardarea.innerHTML = ''
+}
+    
+
+
+
+//function removeBook{
+ 
+
+//function changeRead
+//needs to grab the index of the book, and then change the reading status innerHTML
 
 </script>
 </html>
