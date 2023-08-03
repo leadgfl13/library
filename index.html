@@ -70,8 +70,7 @@ function Book(title, author, pages, read){
 const title = document.getElementById('bookname').value
 const author = document.getElementById('author').value
 const pages = document.getElementById('pages').value
-var read = document.getElementById('read')
-var notread = document.getElementById('notread')
+var notread = document.getElementById('notread').value
 const formcontainer = document.getElementById('formcontainer')
 
 const submitBook = document.getElementById('submitbook')
@@ -93,7 +92,6 @@ submitEntry.addEventListener('click', loop)
 
 cancelbutton.addEventListener('click', function(event){event.preventDefault()})
 cancelbutton.addEventListener('click', clearData )
-
 
 
 // function to make the form
@@ -184,6 +182,7 @@ function makeCard(something){
     realread = document.createElement('div')
     realread.setAttribute('id', 'realread')
     realread.innerHTML = poop.read
+    card.appendChild(realread)
     changebutton = document.createElement('div')
     changebutton.setAttribute('id', 'changelabel')
     card.appendChild(changebutton)
