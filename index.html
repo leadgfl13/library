@@ -202,7 +202,6 @@ for(let i=0; i<myLibrary.length; i++)
     changebuttonactual.innerHTML= 'Change read status'
     changebutton.appendChild(changebuttonactual)
     var swap = document.getElementById('swapread')
-    swap.addEventListener('click', changeRead)
     removebutton = document.createElement('div')
     removebutton.setAttribute('id', 'remove')
     card.appendChild(removebutton)
@@ -211,6 +210,7 @@ for(let i=0; i<myLibrary.length; i++)
     removebuttonactual.innerHTML= "remove"
     removebutton.appendChild(removebuttonactual)
     removebuttonactual.addEventListener('click', () => {removeBook(i)})
+    changebuttonactual.addEventListener('click', () =>{changeRead(i)})
 }
 
 }
@@ -225,21 +225,24 @@ function removeBook(book){
     
 
 } 
-
-function changeRead(){
-    check = document.getElementById('realread')
-    if(check.innerHTML ='yes'){
-        check.innerHTML ='no'
+// need to access the array position, get that book value for read and change it, then refresh then refresh the page!
+function changeRead(book) {
+    myBook = myLibrary[book]
+    console.log(myBook.read)
+    if(myBook.read =="yes"){
+        myBook.read = "no"
     }
-    if(check.innerHTML = 'no'){
-        check.innerHTML ='yes'
+    else if(myBook.read =='no'){
+        myBook.read = 'yes'
     }
-}
+    loop()
+    }       
+   
 
 
 
-
-
+//BIG IDEA:  Don't manipulate the cards, manipulate the book objects themselves, them refresh the page with new data.
+// Access each object through the index value, so they all have 'unique' idenitifiers
 
 //needs to grab the index of the book, and then change the reading status innerHTML
 
