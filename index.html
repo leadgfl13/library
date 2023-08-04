@@ -8,6 +8,7 @@
     
 </head>
 <body>
+    <!--This is the main page layout-->
     <div class="container" id = 'container'>
         <div class="top">
             <div class="heads">Title Test Here!</div>
@@ -21,7 +22,7 @@
         <div class="middlearea" id = cardarea>  
         </div> 
     </div>
-    
+    <!--Layout for the form-->
     <div class="formcontrol" id = 'formcontainer'>
         <form action="" id = "form">
         <div class="inputcontainer">
@@ -77,7 +78,7 @@ const submitBook = document.getElementById('submitbook')
 const left = document.getElementById('leftcolumn')
 const left2 = document.getElementById('leftcolumn')
 const submitEntry = document.getElementById('submitentry')
-
+const removeButton = document.getElementById('removal')
 
 
 //Submit new book Event for bringing up input form
@@ -87,12 +88,9 @@ submitEntry.addEventListener('click', function(event){event.preventDefault()})
 submitEntry.addEventListener('click', Check)
 submitEntry.addEventListener('click', getData)
 submitEntry.addEventListener('click', clearData)
-submitEntry.addEventListener('click', clearAll)
 submitEntry.addEventListener('click', loop)
-
 cancelbutton.addEventListener('click', function(event){event.preventDefault()})
 cancelbutton.addEventListener('click', clearData )
-
 
 // function to make the form
 function makeForm(){
@@ -146,8 +144,21 @@ function clearData(){
 //For Books in Library:
 //Make a card. set card title to book.title, author to book.author, etc.
 
-function makeCard(something){
+function makeCard(poop){
+   
+
+}
+
+//looping function
+let middle = document.getElementById('id', 'cardarea')
+
+function loop(){
+    cardarea.innerHTML= ''
+
+for(let i=0; i<myLibrary.length; i++)
+{
     cardarea = document.getElementById('cardarea') 
+    let book= myLibrary[i]
     card = document.createElement('div')
     card.setAttribute('id', 'bookcard')
     cardarea.appendChild(card)
@@ -157,7 +168,7 @@ function makeCard(something){
     card.appendChild(titlelabel)
     realtitle = document.createElement('div')
     realtitle.setAttribute('id','realtitle')
-    realtitle.innerHTML = poop.title
+    realtitle.innerHTML = book.title
     card.appendChild(realtitle)
     authorlabel = document.createElement('div')
     authorlabel.setAttribute('id', 'authorlabel')
@@ -165,7 +176,7 @@ function makeCard(something){
     card.appendChild(authorlabel)
     realauthor = document.createElement('div')
     realauthor.setAttribute('id', 'realauthor')
-    realauthor.innerHTML=poop.author
+    realauthor.innerHTML=book.author
     card.appendChild(realauthor)
     pageslabel = document.createElement('div')
     pageslabel.setAttribute('id', 'pageslabel')
@@ -173,7 +184,7 @@ function makeCard(something){
     card.appendChild(pageslabel)
     realpages = document.createElement('div')
     realpages.setAttribute('id', 'realpages')
-    realpages.innerHTML=poop.pages
+    realpages.innerHTML=book.pages
     card.appendChild(realpages)
     readlabel = document.createElement('div')
     readlabel.setAttribute('id', 'readlabel')
@@ -181,44 +192,55 @@ function makeCard(something){
     card.appendChild(readlabel)
     realread = document.createElement('div')
     realread.setAttribute('id', 'realread')
-    realread.innerHTML = poop.read
+    realread.innerHTML = book.read
     card.appendChild(realread)
     changebutton = document.createElement('div')
-    changebutton.setAttribute('id', 'changelabel')
+    changebutton.setAttribute('id', 'changereadstatus')
     card.appendChild(changebutton)
     changebuttonactual = document.createElement('button')
+    changebuttonactual.setAttribute('id', 'swapread')
     changebuttonactual.innerHTML= 'Change read status'
     changebutton.appendChild(changebuttonactual)
+    var swap = document.getElementById('swapread')
+    swap.addEventListener('click', changeRead)
     removebutton = document.createElement('div')
     removebutton.setAttribute('id', 'remove')
     card.appendChild(removebutton)
     removebuttonactual = document.createElement('button')
+    removebuttonactual.setAttribute('id', 'removal')
     removebuttonactual.innerHTML= "remove"
     removebutton.appendChild(removebuttonactual)
+    removebuttonactual.addEventListener('click', () => {removeBook(i)})
 }
 
-//looping function
-let middle = document.getElementById('id', 'cardarea')
-
-function loop(){
-for (poop of myLibrary){
-    //need to clear it first
-    makeCard(poop)
-}
 }
 
-function clearAll(){
-    main = document.getElementById('cardarea')
-    cardarea.innerHTML = ''
-}
+
+
+
+function removeBook(book){
+    console.log("Button function")
+    myLibrary.splice(book,1)
+    loop()
     
 
+} 
+
+function changeRead(){
+    check = document.getElementById('realread')
+    if(check.innerHTML ='yes'){
+        check.innerHTML ='no'
+    }
+    if(check.innerHTML = 'no'){
+        check.innerHTML ='yes'
+    }
+}
 
 
-//function removeBook{
- 
 
-//function changeRead
+
+
+
 //needs to grab the index of the book, and then change the reading status innerHTML
 
 </script>
