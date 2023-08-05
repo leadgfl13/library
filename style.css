@@ -12,65 +12,119 @@ body{margin:0px;
 
 .topleft{
     grid-area:1/1/2/2;
-    background-color:red;
+    background-color: (rgb(147, 199, 175));
     display:flex;
     justify-content:center;
     align-items:center;
 }
-
+ .submitbook{
+    background-color :(rgb(168, 232, 202));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:36px;
+    height:100%;
+    width:100%;
+}
 .top{
     grid-area:1/2/2/4;
-    background-color: blue;
     height:100%;
+    background-image:linear-gradient(rgb(168, 232, 202), rgb(3, 3, 91));
+    box-shadow:0px 5px 2px 2px blue;
+    margin-bottom:5px;
+}
+    
+
+.info{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
     
 }
+    
+
 #leftcolumn{
     grid-area:2/1/3/2;
-    background-color: green;
-
+    background-image:linear-gradient(rgb(168, 232, 202), rgb(3, 3, 91));
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    border-right: 2px groove rgb(4, 4, 35);
 }
+
+
 
 .middlearea{
+    
     grid-area:2/2/3/3;
-    background-color: black;
     display:grid;
     grid-template-columns:repeat(4, 1fr);
-    grid-template-rows: minmax(5px, 50px);
-    
+    grid-template-rows: repeat(3, 200px);
+    grid-auto-rows: 200px;;
+    gap:20px 20px;
+    background: radial-gradient(#9e854b, #523700 ) ;  
+    border:8px groove black;
     }
+
+
 .heads{
+    display:flex;
     font-size:64px;
+    
+    
+}
+#leftcolumn> img{
+    
+    background-image:url(images/book\ symbol.png);
+    opacity:.5;
+    border-radius:20px;
+}
+
+.top{
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 
-#submitbook{
-    height:70px;
-    width:140px;
-    border-radius:13px;
-}
+
 
 #bookcard{
+    margin:8px;
     display:grid;
     grid-template-columns:1fr 3fr;
     grid-template-rows:repeat(1fr,6);
-    height:200px;
-    width:250px;
+    height:100%;
+    width:100%;
     background-color:antiquewhite;
     margin:5px;
+    border-radius:8px;
+    box-shadow:-5px 5px 2px 2px rgb(255, 149, 97);
     
 }
 #titlelabel{
+    display:flex;
+    align-items:center;
+    justify-content:center;
     grid-area:1/1/2/2;
     border-right:2px solid black;
     border-bottom:1px solid gray;
 }
 
 #title{
+    display:flex;
+    align-items:center;
+    justify-content:center;
     grid-area:1/2/2/3;
     border-bottom:1px solid gray;
 }
 
 #realtitle{
+    display:flex;
+    align-items:center;
+    justify-content:center;
     grid-area:1/2/2/3;
     border-bottom:1px solid gray;
 }
@@ -78,6 +132,9 @@ body{margin:0px;
 
 
 #authorlabel{
+    display:flex;
+    align-items:center;
+    justify-content:center;
     grid-area:2/1/3/2;
     border-right:2px solid black;
     border-bottom:1px solid gray;
@@ -85,11 +142,17 @@ body{margin:0px;
 
 
 #realauthor{
+    display:flex;
+    align-items:center;
+    justify-content:center;
     grid-area:2/2/3/3;
     border-bottom:1px solid gray;
 }
 
 #pageslabel{
+    display:flex;
+    align-items:center;
+    justify-content:center;
     grid-area:3/1/4/2;
     border-right:2px solid black;
     border-bottom:1px solid gray;
@@ -98,17 +161,26 @@ body{margin:0px;
 }
 
 #realpages{ 
+    display:flex;
+    align-items:center;
+    justify-content:center;
     grid-area:3/2/4/3;
     border-bottom:1px solid gray;
 
 }
 
 #readlabel{
+    display:flex;
+    align-items:center;
+    justify-content:center;
     grid-area:4/1/5/2;
     border-right:2px solid black;
 }
 
 #realread{
+    display:flex;
+    align-items:center;
+    justify-content:center;
     grid-area:4/2/5/3;
 }
 
@@ -140,7 +212,6 @@ input:valid{
 #formcontainer{
     display:none;
     position:absolute;
-   
     top:200px;
     left:475px;
     height:280px;
