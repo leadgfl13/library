@@ -38,6 +38,7 @@
             <label for="author">Author:</label>
             <input type="text" id ="author">
         </div>
+
         <div class="inputcontainer">
             <label for="pages"># Pages:</label>
             <input type="number" id = "pages">
@@ -126,9 +127,9 @@ function getData(){
     const title = document.getElementById('bookname').value
     const author = document.getElementById('author').value
     const pages = document.getElementById('pages').value
-    const newBook = new Book(title, author, pages, read)
-    console.log(newBook)
-    myLibrary.push(newBook)
+    const entry = new Book(title, author, pages, read)
+    console.log(entry)
+    myLibrary.push(entry)
 }
 
 //function to clear input and make form invisible again
