@@ -33,12 +33,12 @@
 				</div>
 				<div class="inputcontainer">
 					<label for="author">Author:</label>
-					<input type="text" required id="author" />
+					<input type="text" id="author" required />
 				</div>
 
 				<div class="inputcontainer">
 					<label for="pages"># Pages:</label>
-					<input type="number" id="pages" required />
+					<input type="number" id="pages" min="10" max="2000" required />
 				</div>
 				<div class="radiobox">
 					<div class="radio-title">Did you read it?</div>
@@ -87,9 +87,6 @@
 		//Submit new book Event for bringing up input form
 		submitBook.addEventListener("click", makeForm);
 		// Need to use preventDefaultfunction to stop data from being sent.
-		submitEntry.addEventListener("click", function (event) {
-			event.preventDefault();
-		});
 		submitEntry.addEventListener("click", Check);
 		submitEntry.addEventListener("click", getData);
 		submitEntry.addEventListener("click", clearData);
