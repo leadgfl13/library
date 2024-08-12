@@ -1,260 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library</title>
-    <link rel="stylesheet" href="style.css">
-    
-</head>
-<body>
-    <!--This is the main page layout-->
-    <div class="container" id = 'container'>
-        <div class="top">
-            <div class="heads">Welcome to the Library 
-            </div>
-        </div>
-        <div class="topleft">
-            <button class = 'submitbook' id = 'submitbook'> Add Book +</button>
-        </div>
-        <div class="leftcolumn" id = "leftcolumn">
-            <img src ="images/book symbol.png">
-            <div class="info">
-                <h3>My Library</h3>
-                <h4>Copyright 2023</h4>
-            </div>
-        </div>
-        <div class="middlearea" id = cardarea>  
-        </div> 
-    </div>
-    <!--Layout for the form-->
-    <div class="formcontrol" id = 'formcontainer'>
-        <form action="" id = "form">
-        <div class="inputcontainer">
-             <label for="bookname">Book Name:</label>
-            <input type="text" id = 'bookname'>
-        </div>
-        <div class="inputcontainer">
-            <label for="author">Author:</label>
-            <input type="text" id ="author">
-        </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Library</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<!--This is the main page layout-->
+		<div class="container" id="container">
+			<div class="top">
+				<div class="heads">Welcome to the Library</div>
+			</div>
+			<div class="topleft">
+				<button class="submitbook" id="submitbook">Add Book +</button>
+			</div>
+			<div class="leftcolumn" id="leftcolumn">
+				<img src="images/book symbol.png" />
+				<div class="info">
+					<h3>My Library</h3>
+					<h4>Copyright 2023</h4>
+				</div>
+			</div>
+			<div class="middlearea" id="cardarea"></div>
+		</div>
+		<!--Layout for the form-->
+		<div class="formcontrol" id="formcontainer">
+			<form action="submit" id="form">
+				<div class="inputcontainer">
+					<label for="bookname">Book Name:</label>
+					<input type="text" id="bookname" required />
+				</div>
+				<div class="inputcontainer">
+					<label for="author">Author:</label>
+					<input type="text" required id="author" />
+				</div>
 
-        <div class="inputcontainer">
-            <label for="pages"># Pages:</label>
-            <input type="number" id = "pages">
-        </div>
-            <div class="radiobox">
-                <div class = "radio-title">Did you read it?</div>
-                <div class = "radio" id = 'radios'>
-                    <label for="read">Yes</label>
-                     <input type="radio" value = "yes" id = "read" name ="choice">
-                </div>
-                <div class = "radio" id = 'radios'>
-                    <label for="notread">No</label>
-                    <input type="radio" value ="no" id = "notread" name = "choice">
-                </div>
-            </div>
-           <button type ="Submit" id = 'submitentry'>Submit Book</button>
-           <button type ="cancel" id = 'cancelbutton'>Cancel</button>
-        </form>
-    </div>
+				<div class="inputcontainer">
+					<label for="pages"># Pages:</label>
+					<input type="number" id="pages" required />
+				</div>
+				<div class="radiobox">
+					<div class="radio-title">Did you read it?</div>
+					<div class="radio" id="radios">
+						<label for="read">Yes</label>
+						<input type="radio" value="yes" id="read" name="choice" />
+					</div>
+					<div class="radio" id="radios">
+						<label for="notread">No</label>
+						<input type="radio" value="no" id="notread" name="choice" />
+					</div>
+				</div>
+				<button type="Submit" id="submitentry">Submit Book</button>
+				<button type="cancel" id="cancelbutton">Cancel</button>
+			</form>
+		</div>
+	</body>
 
-</body>
+	<script>
+		let myLibrary = []; //sets library to an empty array
 
-<script>
+		//Book constructor
 
-let myLibrary = [] //sets library to an empty array
+		class Book {
+			constructor(title, author, pages, read) {
+				this.title = title;
+				this.author = author;
+				this.pages = pages;
+				this.read = read;
+			}
+		}
 
-//Book constructor
+		//constant values
+		const title = document.getElementById("bookname").value;
+		const author = document.getElementById("author").value;
+		const pages = document.getElementById("pages").value;
+		var notread = document.getElementById("notread").value;
+		const formcontainer = document.getElementById("formcontainer");
 
-class Book{
-    constructor(title, author, pages, read){
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-        this.read = read;
-    }
-}
+		const submitBook = document.getElementById("submitbook");
+		const left = document.getElementById("leftcolumn");
+		const left2 = document.getElementById("leftcolumn");
+		const submitEntry = document.getElementById("submitentry");
+		const removeButton = document.getElementById("removal");
 
+		//Submit new book Event for bringing up input form
+		submitBook.addEventListener("click", makeForm);
+		// Need to use preventDefaultfunction to stop data from being sent.
+		submitEntry.addEventListener("click", function (event) {
+			event.preventDefault();
+		});
+		submitEntry.addEventListener("click", Check);
+		submitEntry.addEventListener("click", getData);
+		submitEntry.addEventListener("click", clearData);
+		submitEntry.addEventListener("click", loop);
+		cancelbutton.addEventListener("click", function (event) {
+			event.preventDefault();
+		});
+		cancelbutton.addEventListener("click", clearData);
 
-//constant values
-const title = document.getElementById('bookname').value
-const author = document.getElementById('author').value
-const pages = document.getElementById('pages').value
-var notread = document.getElementById('notread').value
-const formcontainer = document.getElementById('formcontainer')
+		// function to make the form
+		function makeForm() {
+			const formValue = document.getElementById("formcontainer");
+			formValue.setAttribute("style", "display:flex; flex-direction:column");
+			const body = document.getElementById("container");
+			body.setAttribute("style", "pointer-events:none; filter:blur(4px)");
+		}
 
-const submitBook = document.getElementById('submitbook')
-const left = document.getElementById('leftcolumn')
-const left2 = document.getElementById('leftcolumn')
-const submitEntry = document.getElementById('submitentry')
-const removeButton = document.getElementById('removal')
+		//changes the read status depending on what is checked
+		function Check() {
+			if (document.getElementById("read").checked) {
+				read = document.getElementById("read").value;
+			} else if (document.getElementById("notread").checked) {
+				read = document.getElementById("notread").value;
+			}
+			return read;
+		}
 
+		// function to get the form data and stores it in Book object
+		function getData() {
+			const title = document.getElementById("bookname").value;
+			const author = document.getElementById("author").value;
+			const pages = document.getElementById("pages").value;
+			const entry = new Book(title, author, pages, read);
+			console.log(entry);
+			myLibrary.push(entry);
+		}
 
-//Submit new book Event for bringing up input form
-submitBook.addEventListener('click', makeForm)
-// Need to use preventDefaultfunction to stop data from being sent.
-submitEntry.addEventListener('click', function(event){event.preventDefault()})
-submitEntry.addEventListener('click', Check)
-submitEntry.addEventListener('click', getData)
-submitEntry.addEventListener('click', clearData)
-submitEntry.addEventListener('click', loop)
-cancelbutton.addEventListener('click', function(event){event.preventDefault()})
-cancelbutton.addEventListener('click', clearData )
+		//function to clear input and make form invisible again
+		function clearData() {
+			const title = document.getElementById("bookname");
+			const author = document.getElementById("author");
+			const pages = document.getElementById("pages");
+			var read = document.getElementById("read");
+			var notread = document.getElementById("notread");
+			title.value = "";
+			author.value = "";
+			pages.value = "";
+			notread.checked = false;
+			read.checked = false;
+			formcontainer.setAttribute("style", "display:none");
+			const body = document.getElementById("container");
+			body.setAttribute("style", "pointer-events:auto; filter:blur(0px)");
+		}
 
-// function to make the form
-function makeForm(){
-    const formValue = document.getElementById('formcontainer')
-    formValue.setAttribute('style', 'display:flex; flex-direction:column')
-    const body = document.getElementById('container')
-    body.setAttribute('style','pointer-events:none; filter:blur(4px)')
+		//LOOP function for making cards.
+		//For Books in Library:
+		//Make a card. set card title to book.title, author to book.author, etc.
 
-}
+		function makeCard(poop) {}
 
-//changes the read status depending on what is checked
-function Check(){
-    if(document.getElementById('read').checked){
-        read = document.getElementById('read').value
-    }
-    else if(document.getElementById('notread').checked){
-        read = document.getElementById('notread').value
-    }
-    return(read)
-}
+		//looping function
+		let middle = document.getElementById("id", "cardarea");
 
-// function to get the form data and stores it in Book object
-function getData(){
-    const title = document.getElementById('bookname').value
-    const author = document.getElementById('author').value
-    const pages = document.getElementById('pages').value
-    const entry = new Book(title, author, pages, read)
-    console.log(entry)
-    myLibrary.push(entry)
-}
+		function loop() {
+			cardarea.innerHTML = "";
 
-//function to clear input and make form invisible again
-function clearData(){
-    const title = document.getElementById('bookname')
-    const author = document.getElementById('author')
-    const pages = document.getElementById('pages')
-    var read = document.getElementById('read')
-    var notread = document.getElementById('notread')
-    title.value = ''
-    author.value = ''
-    pages.value = ''
-    notread.checked = false
-    read.checked = false
-    formcontainer.setAttribute('style', 'display:none')
-    const body = document.getElementById('container')
-    body.setAttribute('style','pointer-events:auto; filter:blur(0px)')
-    
-}
+			for (let i = 0; i < myLibrary.length; i++) {
+				cardarea = document.getElementById("cardarea");
+				let book = myLibrary[i];
+				card = document.createElement("div");
+				card.setAttribute("id", "bookcard");
+				cardarea.appendChild(card);
+				titlelabel = document.createElement("div");
+				titlelabel.setAttribute("id", "titlelabel");
+				titlelabel.innerHTML = "Title";
+				card.appendChild(titlelabel);
+				realtitle = document.createElement("div");
+				realtitle.setAttribute("id", "realtitle");
+				realtitle.innerHTML = book.title;
+				card.appendChild(realtitle);
+				authorlabel = document.createElement("div");
+				authorlabel.setAttribute("id", "authorlabel");
+				authorlabel.innerHTML = "Author";
+				card.appendChild(authorlabel);
+				realauthor = document.createElement("div");
+				realauthor.setAttribute("id", "realauthor");
+				realauthor.innerHTML = book.author;
+				card.appendChild(realauthor);
+				pageslabel = document.createElement("div");
+				pageslabel.setAttribute("id", "pageslabel");
+				pageslabel.innerHTML = "# Pages";
+				card.appendChild(pageslabel);
+				realpages = document.createElement("div");
+				realpages.setAttribute("id", "realpages");
+				realpages.innerHTML = book.pages;
+				card.appendChild(realpages);
+				readlabel = document.createElement("div");
+				readlabel.setAttribute("id", "readlabel");
+				readlabel.innerHTML = "Read?";
+				card.appendChild(readlabel);
+				realread = document.createElement("div");
+				realread.setAttribute("id", "realread");
+				realread.innerHTML = book.read;
+				card.appendChild(realread);
+				changebutton = document.createElement("div");
+				changebutton.setAttribute("id", "changereadstatus");
+				card.appendChild(changebutton);
+				changebuttonactual = document.createElement("button");
+				changebuttonactual.setAttribute("id", "swapread");
+				changebuttonactual.innerHTML = "Change read status";
+				changebutton.appendChild(changebuttonactual);
+				var swap = document.getElementById("swapread");
+				removebutton = document.createElement("div");
+				removebutton.setAttribute("id", "remove");
+				card.appendChild(removebutton);
+				removebuttonactual = document.createElement("button");
+				removebuttonactual.setAttribute("id", "removal");
+				removebuttonactual.innerHTML = "remove";
+				removebutton.appendChild(removebuttonactual);
+				removebuttonactual.addEventListener("click", () => {
+					removeBook(i);
+				});
+				changebuttonactual.addEventListener("click", () => {
+					changeRead(i);
+				});
+			}
+		}
 
-//LOOP function for making cards.
-//For Books in Library:
-//Make a card. set card title to book.title, author to book.author, etc.
+		function removeBook(book) {
+			console.log("Button function");
+			myLibrary.splice(book, 1);
+			loop();
+		}
+		// need to access the array position, get that book value for read and change it, then refresh then refresh the page!
+		function changeRead(book) {
+			myBook = myLibrary[book];
+			console.log(myBook.read);
+			if (myBook.read == "yes") {
+				myBook.read = "no";
+			} else if (myBook.read == "no") {
+				myBook.read = "yes";
+			}
+			loop();
+		}
 
-function makeCard(poop){
-   
+		//BIG IDEA:  Don't manipulate the cards, manipulate the book objects themselves, them refresh the page with new data.
+		// Access each object through the index value, so they all have 'unique' idenitifiers
 
-}
-
-//looping function
-let middle = document.getElementById('id', 'cardarea')
-
-function loop(){
-    cardarea.innerHTML= ''
-
-for(let i=0; i<myLibrary.length; i++)
-{
-    cardarea = document.getElementById('cardarea') 
-    let book= myLibrary[i]
-    card = document.createElement('div')
-    card.setAttribute('id', 'bookcard')
-    cardarea.appendChild(card)
-    titlelabel = document.createElement('div')
-    titlelabel.setAttribute('id', 'titlelabel')
-    titlelabel.innerHTML = 'Title'
-    card.appendChild(titlelabel)
-    realtitle = document.createElement('div')
-    realtitle.setAttribute('id','realtitle')
-    realtitle.innerHTML = book.title
-    card.appendChild(realtitle)
-    authorlabel = document.createElement('div')
-    authorlabel.setAttribute('id', 'authorlabel')
-    authorlabel.innerHTML = 'Author'
-    card.appendChild(authorlabel)
-    realauthor = document.createElement('div')
-    realauthor.setAttribute('id', 'realauthor')
-    realauthor.innerHTML=book.author
-    card.appendChild(realauthor)
-    pageslabel = document.createElement('div')
-    pageslabel.setAttribute('id', 'pageslabel')
-    pageslabel.innerHTML = '# Pages'
-    card.appendChild(pageslabel)
-    realpages = document.createElement('div')
-    realpages.setAttribute('id', 'realpages')
-    realpages.innerHTML=book.pages
-    card.appendChild(realpages)
-    readlabel = document.createElement('div')
-    readlabel.setAttribute('id', 'readlabel')
-    readlabel.innerHTML = "Read?"
-    card.appendChild(readlabel)
-    realread = document.createElement('div')
-    realread.setAttribute('id', 'realread')
-    realread.innerHTML = book.read
-    card.appendChild(realread)
-    changebutton = document.createElement('div')
-    changebutton.setAttribute('id', 'changereadstatus')
-    card.appendChild(changebutton)
-    changebuttonactual = document.createElement('button')
-    changebuttonactual.setAttribute('id', 'swapread')
-    changebuttonactual.innerHTML= 'Change read status'
-    changebutton.appendChild(changebuttonactual)
-    var swap = document.getElementById('swapread')
-    removebutton = document.createElement('div')
-    removebutton.setAttribute('id', 'remove')
-    card.appendChild(removebutton)
-    removebuttonactual = document.createElement('button')
-    removebuttonactual.setAttribute('id', 'removal')
-    removebuttonactual.innerHTML= "remove"
-    removebutton.appendChild(removebuttonactual)
-    removebuttonactual.addEventListener('click', () => {removeBook(i)})
-    changebuttonactual.addEventListener('click', () =>{changeRead(i)})
-}
-
-}
-
-
-
-
-function removeBook(book){
-    console.log("Button function")
-    myLibrary.splice(book,1)
-    loop()
-    
-
-} 
-// need to access the array position, get that book value for read and change it, then refresh then refresh the page!
-function changeRead(book) {
-    myBook = myLibrary[book]
-    console.log(myBook.read)
-    if(myBook.read =="yes"){
-        myBook.read = "no"
-    }
-    else if(myBook.read =='no'){
-        myBook.read = 'yes'
-    }
-    loop()
-    }       
-   
-
-
-
-//BIG IDEA:  Don't manipulate the cards, manipulate the book objects themselves, them refresh the page with new data.
-// Access each object through the index value, so they all have 'unique' idenitifiers
-
-//needs to grab the index of the book, and then change the reading status innerHTML
-
-</script>
+		//needs to grab the index of the book, and then change the reading status innerHTML
+	</script>
 </html>
