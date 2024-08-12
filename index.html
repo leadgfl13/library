@@ -26,10 +26,16 @@
 		</div>
 		<!--Layout for the form-->
 		<div class="formcontrol" id="formcontainer">
-			<form action="submit" id="form">
+			<form action="" id="form">
 				<div class="inputcontainer">
 					<label for="bookname">Book Name:</label>
-					<input type="text" id="bookname" required />
+					<input
+						type="text"
+						id="bookname"
+						required
+						minlength="1"
+						maxlength="20"
+					/>
 				</div>
 				<div class="inputcontainer">
 					<label for="author">Author:</label>
@@ -51,7 +57,7 @@
 						<input type="radio" value="no" id="notread" name="choice" />
 					</div>
 				</div>
-				<button type="Submit" id="submitentry">Submit Book</button>
+				<button type="submit" id="submitentry">Submit Book</button>
 				<button type="cancel" id="cancelbutton">Cancel</button>
 			</form>
 		</div>
@@ -83,14 +89,16 @@
 		const left2 = document.getElementById("leftcolumn");
 		const submitEntry = document.getElementById("submitentry");
 		const removeButton = document.getElementById("removal");
-
+		form.addEventListener("submit", function (event) {
+			event.preventDefault();
+			console.log("Goodbye");
+			Check();
+			getData();
+			clearData();
+			loop();
+		});
 		//Submit new book Event for bringing up input form
 		submitBook.addEventListener("click", makeForm);
-		// Need to use preventDefaultfunction to stop data from being sent.
-		submitEntry.addEventListener("click", Check);
-		submitEntry.addEventListener("click", getData);
-		submitEntry.addEventListener("click", clearData);
-		submitEntry.addEventListener("click", loop);
 		cancelbutton.addEventListener("click", function (event) {
 			event.preventDefault();
 		});
